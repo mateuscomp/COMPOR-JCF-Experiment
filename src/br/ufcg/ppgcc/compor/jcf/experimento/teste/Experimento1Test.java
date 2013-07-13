@@ -14,6 +14,7 @@ import br.ufcg.ppgcc.compor.jcf.experimento.fachada.FachadaExperimento;
 import br.ufcg.ppgcc.compor.jcf.experimento.fachada.FontePagadora;
 import br.ufcg.ppgcc.compor.jcf.experimento.fachada.Resultado;
 import br.ufcg.ppgcc.compor.jcf.experimento.fachada.Titular;
+import br.ufcg.ppgcc.compor.jcf.experimento.impl.facade.CalculadorIRFacade;
 
 public class Experimento1Test {
 
@@ -21,23 +22,22 @@ public class Experimento1Test {
 
 	@Before
 	public void iniciar() {
-		//Coloque sua Fachada aqui.
-		fachada = null;
+		fachada = new CalculadorIRFacade();
 	}
 
-	@Test
+	@Test //OK
 	public void novoTitular() {
 		Titular titular = criarTitularMinimo();
 		verificaCriacaoTitular(titular);
 	}
 
-	@Test
+	@Test //OK
 	public void titularCompleta() {
 		Titular titular = criarTitularPadrao();
 		verificaCriacaoTitular(titular);
 	}
 
-	@Test
+	@Test //OK
 	public void doisTitulares() {
 		Titular titular1 = criarTitularPadrao();
 		fachada.criarNovoTitular(titular1);
@@ -50,7 +50,7 @@ public class Experimento1Test {
 		assertEquals(titular2, titulares.get(1));
 	}
 
-	@Test
+	@Test //OK
 	public void novaFontePagadora() {
 		FontePagadora fonte = criarFontePagadoraPadrao1();
 		Titular titularSalvo = salvarTitularComUmaFonte(fonte);
@@ -60,7 +60,7 @@ public class Experimento1Test {
 		assertEquals(fonte, fontes.get(0));
 	}
 
-	@Test
+	@Test //OK
 	public void duasFontesPagadorasEmUmTitular() {
 		Titular titular = criarTitularPadrao();
 		fachada.criarNovoTitular(titular);
@@ -75,7 +75,7 @@ public class Experimento1Test {
 		assertEquals(fonte2, fontes.get(1));
 	}
 
-	@Test
+	@Test //OK
 	public void duasFontesPagadorasUmaEmCadaTitular() {
 		Titular titular1 = criarTitularPadrao();
 		fachada.criarNovoTitular(titular1);
@@ -96,7 +96,7 @@ public class Experimento1Test {
 		assertEquals(fonte2, fontes2.get(0));
 	}
 
-	@Test
+	@Test //OK
 	public void novoDependente() {
 		Titular titular = criarTitularPadrao();
 		fachada.criarNovoTitular(titular);
@@ -109,7 +109,7 @@ public class Experimento1Test {
 		assertEquals(dependente, dependentes.get(0));
 	}
 
-	@Test
+	@Test //OK
 	public void doisDependentesEmUmTitular() {
 		Titular titular = criarTitularPadrao();
 		fachada.criarNovoTitular(titular);
@@ -124,7 +124,7 @@ public class Experimento1Test {
 		assertEquals(dependente2, dependentes.get(1));
 	}
 
-	@Test
+	@Test //OK
 	public void doisDependentesUmEmCadaTitular() {
 		Titular titular1 = criarTitularPadrao();
 		fachada.criarNovoTitular(titular1);
